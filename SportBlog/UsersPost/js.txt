@@ -1,0 +1,83 @@
+<script>
+        // Функциональность для звезд рейтинга
+        document.querySelectorAll('.rating-stars').forEach(starsContainer => {
+            const stars = starsContainer.querySelectorAll('.star');
+            let currentRating = 0;
+            
+            stars.forEach(star => {
+                star.addEventListener('click', function() {
+                    const value = parseInt(this.getAttribute('data-value'));
+                    currentRating = value;
+                    
+                    // Обновляем отображение звезд
+                    stars.forEach(s => {
+                        const starValue = parseInt(s.getAttribute('data-value'));
+                        if (starValue <= value) {
+                            s.classList.add('active');
+                        } else {
+                            s.classList.remove('active');
+                        }
+                    });
+                    
+                    // Здесь можно отправить оценку на сервер
+                    console.log(`Оценка: ${value} звезд`);
+                });
+                
+                star.addEventListener('mouseover', function() {
+                    const value = parseInt(this.getAttribute('data-value'));
+                    
+                    stars.forEach(s => {
+                        const starValue = parseInt(s.getAttribute('data-value'));
+                        if (starValue <= value) {
+                            s.style.color = '#ffc107';
+                        } else {
+                            s.style.color = '#ddd';
+                        }
+                    });
+                });
+                
+                star.addEventListener('mouseout', function() {
+                    stars.forEach(s => {
+                        const starValue = parseInt(s.getAttribute('data-value'));
+                        if (starValue <= currentRating) {
+                            s.style.color = '#ffc107';
+                        } else {
+                            s.style.color = '#ddd';
+                        }
+                    });
+                });
+            });
+        });
+        
+        // Функциональность для комментариев
+        document.querySelectorAll('.comment-submit').forEach(button => {
+            button.addEventListener('click', function() {
+                const form = this.closest('.comment-form');
+                const input = form.querySelector('.comment-input');
+                const commentsList = form.closest('.comments-section').querySelector('.comments-list');
+                
+                if (input.value.trim() !== '') {
+                    // Создаем новый комментарий
+                    const comment = document.createElement('div');
+                    comment.className = 'comment';
+                    
+                    const now = new Date();
+                    const dateString = now.toLocaleDateString('ru-RU');
+                    
+                    comment.innerHTML = `
+                        <div class="comment-header">
+                            <span class="comment-author">Вы</span>
+                            <span class="comment-date">${dateString}</span>
+                        </div>
+                        <div class="comment-text">${input.value}</div>
+                    `;
+                    
+                    // Добавляем комментарий в начало списка
+                    commentsList.insertBefore(comment, commentsList.firstChild);
+                    
+                    // Очищаем поле ввода
+                    input.value = '';
+                }
+            });
+        });
+    </script>

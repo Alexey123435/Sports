@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Ostate3.css">
+    <link rel="icon" href="iconka.jpg" type="image">
+    <title>SportBlog</title>
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+            <div class="head">
+                <a href="../index.html"><p class="logo">SportBlog</p></a>
+              <ul class="menu">
+                <li><a href="../index.html">Главная</a></li>
+                <li><a href="../html/about.html">О нас</a></li>
+                <li><a href="../html/contacts.html">Контакты</a></li>
+                <li><a href="../pravila/pravila.html">Правила</a></li>
+                <li><a href="../index.html">Назад</a></li>
+              </ul>
+            </div>
+        </header>
+
+        <div class="posts-container">
+            <div class="text">
+                <h1>Пост-информация</h1>
+            </div>
+            <div class="post">
+                <div class="post-header">
+                    <img src="2.jpg" alt="logo" class="avatar">
+                    <div class="info">
+                        <h3>Администратор</h3>
+                        <div class="post-date">15 мая 2024</div>
+                    </div>
+                </div>
+                <div class="text2">
+                    <h1>Чемпионат России Биатлон 2025/2026 – открытие нового сезона</h1>
+                </div>
+                
+                <img src="1.jpg" alt="Картинка" class="post-image">
+                <div class="post-content">
+                    <h2>Сезон офицально открыт!</h2>
+                    <p>Новый сезон российского биатлона 2025/2026 начинает свои захватывающие соревнования
+                         с Чемпионата России – главного национального турнира, где определяются лучшие спортсмены страны.
+                          Этот этап традиционно открывает биатлонный год и служит ключевым рубежом для отбора в сборную 
+                          на международные соревнования, включая Кубок мира и чемпионаты мира.</p>
+                    <p>В 2025/2026 году Чемпионат России пройдет на современных и технически оснащённых аренах, 
+                        предоставляющих спортсменам отличные условия для максимальной самореализации.
+                         В программу включены индивидуальные гонки, спринты, масс-старты и эстафеты, что позволяет
+                          показать универсальность и командный дух участников.</p>
+                    <h2>Все в ожидании нового рекорда</h2>
+                    <p>Особое внимание уделяется дебютантам и молодым перспективным спортсменам, которые смогут заявить о себе
+                         на самой престижной национальной площадке. Опытные атлеты же стремятся удержать лидерство и подтвердить
+                          высокий уровень подготовки перед международными стартами. </p>
+                    <p>Чемпионат России 2025/2026 не только выявит сильнейших биатлонистов страны, но и послужит яркой стартовой
+                         площадкой для формирования команды, которая будет представлять Россию на мировом уровне в новом сезоне.</p>
+                </div>
+                
+                <div class="rating-section">
+                    <div class="rating-stars">
+                        <span class="star" data-value="1">★</span>
+                        <span class="star" data-value="2">★</span>
+                        <span class="star" data-value="3">★</span>
+                        <span class="star" data-value="4">★</span>
+                        <span class="star" data-value="5">★</span>
+                    </div>
+                    <div class="rating-text">Оцените пост</div>
+                </div>
+                
+                <div class="comments-section">
+                    <div class="comment-form">
+                        <textarea class="comment-input" placeholder="Оставьте ваш комментарий..."></textarea>
+                        <button class="comment-submit">Отправить</button>
+                    </div>
+                    
+                    <div class="comments-list">
+                        <div class="comment">
+                            <div class="comment-header">
+                                <span class="comment-author">Пользователь</span>
+                                <span class="comment-date">28 ноября 2025</span>
+                            </div>
+                            <div class="comment-text">Как-то так</div>
+                        </div>
+                </div>
+            </div>
+              </div>
+            </div>
+        <footer>
+      <div class="foot1">
+        <p class="logo2">SportBlog</p>
+      </div>
+      <ul class="foot2">
+              <li><a href="../index.html">Главная</a></li>
+              <li><a href="../html/about.html">О нас</a></li>
+      </ul>
+      <div class="foot2">
+        <li><a href="../html/contacts.html">Контакты</a></li>
+        <li><a href="../pravila/pravila.html">Правила</a></li>
+      </div>
+      <div class="foot4">
+         <a href="https://t.me/sport_blog55" target="_blank" rel="noopener"><img src="telegram-2019-logo.svg" alt=""></a>
+      </div>
+    </footer>
+    </div>
+   <script>
+        // Функциональность для звезд рейтинга
+        document.querySelectorAll('.rating-stars').forEach(starsContainer => {
+            const stars = starsContainer.querySelectorAll('.star');
+            let currentRating = 0;
+            
+            stars.forEach(star => {
+                star.addEventListener('click', function() {
+                    const value = parseInt(this.getAttribute('data-value'));
+                    currentRating = value;
+                    
+                    // Обновляем отображение звезд
+                    stars.forEach(s => {
+                        const starValue = parseInt(s.getAttribute('data-value'));
+                        if (starValue <= value) {
+                            s.classList.add('active');
+                        } else {
+                            s.classList.remove('active');
+                        }
+                    });
+                    
+                    // Здесь можно отправить оценку на сервер
+                    console.log(`Оценка: ${value} звезд`);
+                });
+                
+                star.addEventListener('mouseover', function() {
+                    const value = parseInt(this.getAttribute('data-value'));
+                    
+                    stars.forEach(s => {
+                        const starValue = parseInt(s.getAttribute('data-value'));
+                        if (starValue <= value) {
+                            s.style.color = '#ffc107';
+                        } else {
+                            s.style.color = '#ddd';
+                        }
+                    });
+                });
+                
+                star.addEventListener('mouseout', function() {
+                    stars.forEach(s => {
+                        const starValue = parseInt(s.getAttribute('data-value'));
+                        if (starValue <= currentRating) {
+                            s.style.color = '#ffc107';
+                        } else {
+                            s.style.color = '#ddd';
+                        }
+                    });
+                });
+            });
+        });
+        
+        // Функциональность для комментариев
+        document.querySelectorAll('.comment-submit').forEach(button => {
+            button.addEventListener('click', function() {
+                const form = this.closest('.comment-form');
+                const input = form.querySelector('.comment-input');
+                const commentsList = form.closest('.comments-section').querySelector('.comments-list');
+                
+                if (input.value.trim() !== '') {
+                    // Создаем новый комментарий
+                    const comment = document.createElement('div');
+                    comment.className = 'comment';
+                    
+                    const now = new Date();
+                    const dateString = now.toLocaleDateString('ru-RU');
+                    
+                    comment.innerHTML = `
+                        <div class="comment-header">
+                            <span class="comment-author">Вы</span>
+                            <span class="comment-date">${dateString}</span>
+                        </div>
+                        <div class="comment-text">${input.value}</div>
+                    `;
+                    
+                    // Добавляем комментарий в начало списка
+                    commentsList.insertBefore(comment, commentsList.firstChild);
+                    
+                    // Очищаем поле ввода
+                    input.value = '';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
